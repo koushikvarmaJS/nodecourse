@@ -1,11 +1,9 @@
 const express = require('express')
-const cors = require('cors')
+const http = require('http')
+const app = express()
 const {notes} = require('./notes')
 
-const app = express()
-
 app.use(express.json())
-app.use(cors())
 
 app.get('/',(request,response) => {
     response.send('<h1>Hello World</h1>')
@@ -29,7 +27,7 @@ app.post('/api/notes' , (request,response) => {
   response.json(note)
 })
 
-const PORT = process.env.PORT || 3001
+const PORT = 3001
 app.listen(PORT, ()=>{
     console.log("Server is listening on Port:", PORT)
 })
